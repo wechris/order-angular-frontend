@@ -5,8 +5,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class OrderService {
-  
-    private ordersUrl = 'http://localhost:8080/order';
+    private connectionString = process.env.BACKEND_URL || 'http://localhost:8080';
+    private ordersUrl = connectionString + '/order';
     private headers = new Headers({'Access-Control-Allow-Origin': '*', 'Accepts': 'application/json', 'Content-Type': 'application/json'});
   
     public constructor(private http: Http) {}
